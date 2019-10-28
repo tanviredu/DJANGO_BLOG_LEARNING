@@ -1,0 +1,101 @@
+=>python manage.py shell
+
+## insert this into the database
+
+In [1]: from blogapp.models import Dreamreal                               
+
+In [2]: from blogapp.models import Online       
+
+In [5]: dr1 = Dreamreal() ## create a object                               
+
+In [6]: dr1.website = "www.foodship.com"                                   
+
+In [7]: dr1.name = "MD Tanvir Rahman"                                      
+
+In [8]: dr1.mail = "t@yahoo.com"                                           
+
+In [9]: dr1.phonenumber = '1234'                                           
+
+In [10]: dr1.save()                                                        
+
+In [11]: on1 = Online()                                                    
+
+In [12]: on1.company = dr1    ## really does not know how this works                                              
+
+In [13]: on1.domain = "site1.com"                                          
+
+In [14]: on1.save()                                                        
+
+
+### fetching the data
+
+In [16]: from blogapp.models import Dreamreal,Online                       
+
+In [17]: data = Dreamreal.objects.all()                                    
+
+In [18]: for item in data: 
+    ...:     print(item.website) 
+    ...:     print(item.name) 
+    ...:     print(item.mail) 
+    ...:                                                                   
+www.google.com
+Tanvir
+t@gmail.com
+www.foodship.com
+MD Tanvir Rahman
+t@yahoo.com
+
+## searching among the data
+
+In [21]: Dreamreal.objects.filter(name='tanvir')                           
+Out[21]: <QuerySet []>
+
+In [22]: Dreamreal.objects.filter(name='Tanvir') 
+
+
+## fetching data again 
+
+
+In [3]: data = Dreamreal.objects.all()                                     
+
+In [4]: for website in data: 
+   ...:     print (website.website) 
+   ...:                                                                    
+www.google.com
+www.foodship.com
+www.ass.com
+
+In [5]:            
+
+
+## delete al the data 
+
+In [5]: Dreamreal.objects.all().delete()                                   
+Out[5]: (3, {'blogapp.Dreamreal': 3})
+
+In [6]: Online.objects.all().delete()                                      
+Out[6]: (5, {'blogapp.Dreamreal': 0, 'blogapp.Online': 5})
+
+
+## delete specfic data 
+
+In [4]: Dreamreal.objects.filter(website="www.google.com").delete()        
+Out[4]: (1, {'blogapp.Dreamreal': 1})
+
+
+## search the data
+
+In [3]: Dreamreal.objects.filter( 
+   ...: ...     name__startswith='Ta')                                     
+Out[3]: <QuerySet [<Dreamreal: www.google.com active>]>
+
+
+
+## you have to use the keyword <variable>__startswith
+## 
+
+In [4]: Dreamreal.objects.filter( 
+   ...: ...     website__startswith='www')  
+
+
+   ## we have to learn more about that
