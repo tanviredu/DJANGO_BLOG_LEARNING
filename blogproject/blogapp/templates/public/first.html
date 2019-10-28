@@ -5,5 +5,112 @@
         {{ name }}
         <hr>
         {{ department }}
+        <hr>
+        <h3>After aplying the filter</h3>
+    
+    
+        <!--you can apply filter by doing this-->
+        <p>{{ raw_content|truncatewords:10 }}</p>
+        <hr>
+        <p>{{ raw_content|upper }}</p>
+        <hr>
+        <p>{{ raw_content|escape|linebreaks }}</p>
+        <hr>
+        <p>{% lorem 2 %}</p>
+
+        <!-- for printing the date and the current time-->
+        <hr>
+        {% now "jS F Y H:i" %}
+
+        <hr>
+        <!-- very important for adding the bottom line 
+        of any web site-->
+        it is {% now "SHORT_DATETIME_FORMAT" %}
+
+        <hr>
+
+        <!-- this is very important  in order to use the 
+        blocktrans you must import this tag module-->
+        {% load i18n %}<!-- this is the import module-->
+
+       
+
+        {% now "Y" as current_year %}
+{% blocktrans %}Copyright {{ current_year }}{% endblocktrans %}
+
+
+        <hr>
+        <!-- capitalize the first word-->
+        <p>{{ raw_content|truncatewords:10|capfirst }}</p>
+
+        <hr>
+        {{ department|center:"115" }}
+
+
+        <!-- all the spaces will be cut down-->
+        <hr>
+        {{ raw_content|cut:" " }}
+        <hr>
+        {{ value|date:"D d M Y" }}
+        <hr>
+        {{ value|date:"Y" }}
+        <hr>
+        {{ value|date:"M" }}
+        <hr>
+        {{ value|date:"D" }}
+        <hr>
+        <!-- return the first element-->
+        {{ fruit|first }}
+        <hr>
+        <!-- return the last element-->
+        {{ fruit|last }}
+        <hr>
+        <!-- return the last element length-->
+        {{ fruit|last|length }}
+
+        <hr>
+        <!-- return the each element as a list-->
+        {{ raw_content|make_list }}
+
+        <hr>
+        <!-- most used-->
+        {{ raw_content|safe|escape }}
+        <hr>
+        <!-- list slicing-->
+        {{ raw_content|slice:"6" }}
+
+        <hr>
+        <!-- list slicing first slice then make the list-->
+        {{ raw_content|make_list|slice:"6" }}
+
+        <hr>
+            <!-- lets use a for loop-->
+        <h3>
+            {% for item in emaillist%}
+
+                {{ item }}
+
+            {% endfor %}
+        </h3>
+
+        <!-- to make this a clickable link-->
+        <h3>
+            {% for item in emaillist %}
+
+                {{ item|urlize }}
+
+            {% endfor %}
+        </h3>
+
+        <hr>
+
+        <h3>
+            {% for item in link %}
+                {{ item|urlize }}
+            {% endfor %}
+        </h3>
+
     </body>
+
+
 </html>

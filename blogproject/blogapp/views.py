@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import datetime
 ##creating a simple view
 ## request have to be the parameter
 #def hello(request):
@@ -27,7 +28,21 @@ def render_index(request):
     name = "Tanvir Rahman"
     department = "EEE"
     
+    ## adding an element to adding the turncate
+    ## filter    
+    
+    raw_content = "excepteur consectetur cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consectetur non nostrud excepteur minim"
     ## you have to send  adictionary to
-    context = {'id':id,'name':name,'department':department}
+    ## you have to impot datetime first
+    value = datetime.datetime.now()
+    emaillist = ['ornobtanvir@gmail.com','tanviredu2018@gmail.com','mlhearbeat007@gmail.com']
+    
+    ## suppose sending a list of things
+    
+    link = ['www.google.com','www.yahoo.com','www.amazon.com']
+    
+    fruit = ['apple','banana','coconut','mango']
+    context = {'id':id,'name':name,'department':department,'raw_content':raw_content,'value':value,'fruit':fruit,'emaillist':emaillist,'link':link}
     #return render(request,'first.html',context)
+    ## adding the raw content
     return render(request,"public/first.html",context)
