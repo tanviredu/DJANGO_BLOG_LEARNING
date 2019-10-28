@@ -15,11 +15,18 @@ class Dreamreal(models.Model):
     ## who wants to connrct to the table
     online = models.ForeignKey('Online',default=1,on_delete=models.CASCADE)
     
+    ## this function will show the pattern in the admin
+    ## panel
+    def __str__(self):
+        return str(self.website)+" "+str(self.online)
+    
     
     ## now we give the table name it will be inside 
     ## meta class
     class Meta:
         db_table = "dreamreal"
+        
+    
         
         ## apply this command in the browser
         #->python3 manage.py makemigrations
@@ -32,6 +39,16 @@ class Dreamreal(models.Model):
 class Online(models.Model):
     domain = models.CharField(max_length=50)
     
+    ## this function will show the pattern in the admin
+    ## panel
+    
+    def __str__(self):
+        return self.domain
+    
     ##give it a name
     class Meta:
         db_table = "online"
+
+
+## important note you can only do it on SQL databse
+## NOSQL database dont work like that
