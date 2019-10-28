@@ -110,6 +110,35 @@
             {% endfor %}
         </h3>
 
+        <h3>
+            
+            {% for item in fruit %}
+                <li>{{ item }}</li>
+            {% endfor %}
+        </h3>
+        
+                <!-- if else statement in the jinja template-->
+            <h3>
+                {% for item in fruit %}
+                    {% if item == "apple"%}
+                        <h2>hello apple</h2>
+                    {% endif %}
+                {% endfor %}
+            </h3>
+
+            <h3>
+                    {% for item in fruit %}
+                        {% if item == "jackfruit"%}
+                            <h2>hello apple</h2>
+                            {% else %}
+                            <h2>the fruit is not on the list</h2>
+                                                       
+                        {% endif %}
+                    {% endfor %}
+                </h3>
+    
+
+
     </body>
 
 
