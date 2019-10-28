@@ -23,26 +23,30 @@ import datetime
 
 ## now from this we render the html page
 # the page have to be in the template folder
-def render_index(request):
-    id = 143000410
-    name = "Tanvir Rahman"
-    department = "EEE"
+#def render_index(request):
+#    id = 143000410
+#    name = "Tanvir Rahman"
+#    department = "EEE"
     
     ## adding an element to adding the turncate
     ## filter    
     
-    raw_content = "excepteur consectetur cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consectetur non nostrud excepteur minim"
+#    raw_content = "excepteur consectetur cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consecteturr cupidatat ullamco aliquip consectetur non nostrud excepteur minim"
     ## you have to send  adictionary to
     ## you have to impot datetime first
-    value = datetime.datetime.now()
-    emaillist = ['ornobtanvir@gmail.com','tanviredu2018@gmail.com','mlhearbeat007@gmail.com']
+#    value = datetime.datetime.now()
+#    emaillist = ['ornobtanvir@gmail.com','tanviredu2018@gmail.com','mlhearbeat007@gmail.com']
     
     ## suppose sending a list of things
     
-    link = ['www.google.com','www.yahoo.com','www.amazon.com']
+#    link = ['www.google.com','www.yahoo.com','www.amazon.com']
     
-    fruit = ['apple','banana','coconut','mango']
-    context = {'id':id,'name':name,'department':department,'raw_content':raw_content,'value':value,'fruit':fruit,'emaillist':emaillist,'link':link}
+#    fruit = ['apple','banana','coconut','mango']
+#    context = {'id':id,'name':name,'department':department,'raw_content':raw_content,'value':value,'fruit':fruit,'emaillist':emaillist,'link':link}
     #return render(request,'first.html',context)
     ## adding the raw content
-    return render(request,"public/first.html",context)
+#    return render(request,"public/first.html",context)
+
+## this second.html will be extended from the layoyt base file
+def render_index(request):
+    return render(request,'public/second.html',{})
