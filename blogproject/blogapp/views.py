@@ -1,6 +1,12 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import datetime
+
+### adding the mail packages
+from django.core.mail import BadHeaderError,send_mail
+from django.http import HttpResponseRedirect
+
+
 ##creating a simple view
 ## request have to be the parameter
 #def hello(request):
@@ -54,20 +60,44 @@ import datetime
 ## page redirection
 
 
-def hello(request):
-    return redirect("https://www.google.com")
+#def hello(request):
+#    return redirect("https://www.google.com")
 
-def viewArticle(request,articleId):
-    text = "Displaying article number "+str(articleId)
-    #return redirect('https://www.test.com')
-    # redirect will take a function and other parameter
-    #return HttpResponse(text)
+#def viewArticle(request,articleId):
+#    text = "Displaying article number "+str(articleId)
+    ## you can find the exact year and month 
+    ## of the post by fetching the data here
+    ## then redirect this
     ## redirect can take a full url 
     ## or it will take function and the function parameter
-    return redirect(viewArticles,"2015","02")
+#    return redirect(viewArticles,"2015","02")
 
     
     
-def viewArticles(request,year,month):
-    text = "Display articles of "+str(year)+" "+str(month)
-    return HttpResponse(text)
+#def viewArticles(request,year,month):
+#    text = "Display articles of "+str(year)+" "+str(month)
+#    return HttpResponse(text)
+
+def send_mail(request):
+    ## take the subject
+    ## message
+    ## and the sender email
+    ## this POST.get() is stil  a post request 
+    ## but it will take a string first then the content 
+    # which gives you define 
+    # the header 
+    # or you can use just post if you want
+    
+    subject = rquest.POST.get('subject','')
+    message = request.POST.get('messgae','')
+    from_email = request.POST.get('from_email','')
+    if subject and message and from_email:
+        try:
+            send_mail(subject,messgae,from_email,['tanviredu2018@gmail.com'])
+        except:
+            return HttpResponse('something wrong')
+    
+    ### this use a POST from to send mail
+    ## we do that in from request
+    ## use shell first from sending email
+    ## and you have to add the email settings in the project settings
