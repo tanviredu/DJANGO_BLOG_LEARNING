@@ -37,6 +37,21 @@ In [7]: send_mail(
 
    ## Mass Mail system
 
+   In [28]: from django.core.mail import send_mass_mail  
+
+   In [23]: message1 = ('Subject here', 'Here is the message', 'ornobtanvir.gi
+    ...: t@egmail.com', ['tanviredu2018t@gmail.com', 'tanviredu2018t@gmail.
+    ...: com'])    
+
+   In [25]: message2 = ('Another Subject', 'Here is another message', 'ornobta
+    ...: nvir.git@gmail.com', ['tanviredu2018@gmail.com']) 
+
+   In [29]: send_mass_mail((message1, message2), fail_silently=False)         
+   Out[29]: 2 
+
+
+
+
 
 
 
@@ -44,5 +59,52 @@ In [7]: send_mail(
    ## Sending mail with attachment
 
 
+   #####################################################
 
-    ## Mail to admin
+   In [32]: from django.core.mail import EmailMessage                                
+
+In [33]: email = EmailMessage('subject','hello world','ornobtanvir.git@gmail.com',
+    ...: ['tanviredu2018@gmail.com'])                                             
+
+In [34]: email.content_subtype = "html"                                           
+
+In [35]: fd = open('image.png','rb')                                              
+
+## remember VVVI always open the file as 'rb' not just 'r'
+## otherwise it will throw encoding error
+
+In [36]: email.attach('image.jpg',fd.read(),'image/png')                          
+
+In [37]: email.send() 
+
+
+
+
+
+
+
+
+
+   ##################################
+
+
+
+    ## Mail to admin idrectly
+
+    you can send a mil to the admin directly 
+
+    In [2]: from django.core.mail import mail_admins                           
+
+    In [3]: mail_admins('my_subjects','server is going down')  
+
+
+    ##  mail to all the admins (all the managers)
+
+    In [4]: from django.core.mail import mail_managers                         
+
+    In [5]: res = mail_managers('my subject','server is going down')  
+
+
+
+
+    
