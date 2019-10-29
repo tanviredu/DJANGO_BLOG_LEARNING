@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 import datetime
 ##creating a simple view
@@ -48,5 +48,26 @@ import datetime
 #    return render(request,"public/first.html",context)
 
 ## this second.html will be extended from the layoyt base file
-def render_index(request):
-    return render(request,'public/second.html',{})
+#def render_index(request):
+#    return render(request,'public/second.html',{})
+
+## page redirection
+
+
+def hello(request):
+    return redirect("https://www.google.com")
+
+def viewArticle(request,articleId):
+    text = "Displaying article number "+str(articleId)
+    #return redirect('https://www.test.com')
+    # redirect will take a function and other parameter
+    #return HttpResponse(text)
+    ## redirect can take a full url 
+    ## or it will take function and the function parameter
+    return redirect(viewArticles,"2015","02")
+
+    
+    
+def viewArticles(request,year,month):
+    text = "Display articles of "+str(year)+" "+str(month)
+    return HttpResponse(text)

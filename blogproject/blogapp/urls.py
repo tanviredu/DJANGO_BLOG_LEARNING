@@ -18,6 +18,8 @@ urlpatterns = [
     #path('hello_with_param/<str:username>',views.hello_with_param,name='hello_with_param'),
     #path('hello_with_multiple_param/<str:id>/<str:name>',views.hello_with_multiple_param,name='hello_with_multiple_param'),
     #path('hello_again/<str:id>/<str:name>/<str:department>',views.hello_again,name='hello_again'),
-    path('render_index/',views.render_index,name='render_index')
-    
+    #path('render_index/',views.render_index,name='render_index')
+    #path('redirect_page/',views.redirect_page,name='redirect_page')
+    path('article/<str:articleId>',views.viewArticle,name='viewArticle'),
+    path('articles/<str:year>/<str:month>',views.viewArticles,name='viewArticles')
 ]
