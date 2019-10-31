@@ -6,6 +6,11 @@ import datetime
 from django.core.mail import BadHeaderError,send_mail
 from django.http import HttpResponseRedirect
 
+##################### form section
+## now import the form
+from .forms import LoginForm
+
+
 ## we use the generic viwe module for supporting 
 ## just the static file and the easy use of the template
 ## rendering
@@ -114,5 +119,23 @@ from django.http import HttpResponseRedirect
     ## and you have to add the email settings in the project settings
 #class StaticView(TemplateView):
 #    template_name = "public/static.html"
-    
-    
+
+#######################################3
+## first make a form template
+###### create the form logic
+
+def login(request):
+    username  = "not logged in"
+    if request.method == "POST":
+        ## get all the posted data at once
+        MyLoginForm = LoginForm(request.POST)
+        ## validate by one command
+        if MyLoginForm.is_valid():
+            ## fetch the username
+            username = MyLoginForm.cleaned_data['username']
+        else:
+            ## initiate without the credential
+            MyLoginForm = Loginform()
+    ## then just render username in the 
+    ## loggedin.html
+    return render(request,'loggedin.html',{'username':username})
