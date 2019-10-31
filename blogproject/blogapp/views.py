@@ -6,6 +6,17 @@ import datetime
 from django.core.mail import BadHeaderError,send_mail
 from django.http import HttpResponseRedirect
 
+## we use the generic viwe module for supporting 
+## just the static file and the easy use of the template
+## rendering
+## lets make just a static file in the templates
+## normal approcach need a url pattern a view layer and 
+## also the html file to do that
+## file so less code
+
+from django.views.generic import TemplateView
+
+
 
 ##creating a simple view
 ## request have to be the parameter
@@ -78,7 +89,7 @@ from django.http import HttpResponseRedirect
 #    text = "Display articles of "+str(year)+" "+str(month)
 #    return HttpResponse(text)
 
-def send_mail(request):
+#def send_mail(request):
     ## take the subject
     ## message
     ## and the sender email
@@ -88,16 +99,20 @@ def send_mail(request):
     # the header 
     # or you can use just post if you want
     
-    subject = rquest.POST.get('subject','')
-    message = request.POST.get('messgae','')
-    from_email = request.POST.get('from_email','')
-    if subject and message and from_email:
-        try:
-            send_mail(subject,messgae,from_email,['tanviredu2018@gmail.com'])
-        except:
-            return HttpResponse('something wrong')
+#    subject = rquest.POST.get('subject','')
+#    message = request.POST.get('messgae','')
+#    from_email = request.POST.get('from_email','')
+#    if subject and message and from_email:
+#        try:
+#            send_mail(subject,messgae,from_email,['tanviredu2018@gmail.com'])
+#        except:
+#            return HttpResponse('something wrong')
     
     ### this use a POST from to send mail
     ## we do that in from request
     ## use shell first from sending email
     ## and you have to add the email settings in the project settings
+#class StaticView(TemplateView):
+#    template_name = "public/static.html"
+    
+    
