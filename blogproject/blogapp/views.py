@@ -14,7 +14,7 @@ from django.http import HttpResponseRedirect
 ## also the html file to do that
 ## file so less code
 
-from django.views.generic import TemplateView
+#from django.views.generic import TemplateView
 
 
 

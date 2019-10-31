@@ -1,11 +1,4 @@
-"""    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
+
 from django.contrib import admin
 ## add the include in the file we use it to redirect
 from django.urls import path,include
@@ -24,10 +17,19 @@ from . import views
 #3 inclide the views
 # static view is one way to do that
 ## lets do it with Template view
-from django.views.generic import TemplateView
+#from django.views.generic import TemplateView
 ## if you use the Template View you dont need 
 ## any views.py logic layer to render the static file
 
+######################################################
+##generic view with database direct rendering starts here
+## we can directly return database model and send it ti the
+## view directly using generic class like .NET we can dorectly
+## return the database (model)
+from django.views.generic import ListView
+## you have to rnder the database 
+from .models import Dreamreal
+##########################################################
 
 urlpatterns = [
     #path('hello/',views.hello,name='hello'),
@@ -40,5 +42,9 @@ urlpatterns = [
     #path('article/<str:articleId>',views.viewArticle,name='viewArticle'),
     #path('articles/<str:year>/<str:month>',views.viewArticles,name='viewArticles')
     #path('static/',StaticView.as_view() ),
-    path('static/',TemplateView.as_view(template_name='public/static.html'))
+    #path('static/',TemplateView.as_view(template_name='public/static.html'))
+    ## add a path for the database direct rendering with ListView
+    path('dreamreals/',ListView.as_view(model=Dreamreal,context_object_name="dreamreal_objects",template_name="public/listview_databse.html"))    
+    
+    
 ]
