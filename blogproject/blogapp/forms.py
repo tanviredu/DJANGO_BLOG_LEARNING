@@ -1,12 +1,12 @@
 from django import forms 
+from .models import Dreamreal
 
 
-
-
+#################### by default form not custom ##############
 class LoginForm(forms.Form):
     user = forms.CharField(max_length=150)
     password = forms.CharField(widget = forms.PasswordInput())
-    
+############################################################
     
     
     ## variablle name er sathe input filed er name match kore
@@ -19,3 +19,8 @@ class LoginForm(forms.Form):
     ## for password
     ## password
     ##<input type='password' *****name='password'********* placeholder='Enter password'>
+    
+   
+    
+    
+        

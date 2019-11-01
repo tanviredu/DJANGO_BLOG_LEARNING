@@ -9,7 +9,7 @@ from django.http import HttpResponseRedirect
 ##################### form section
 ## now import the form
 from .forms import LoginForm
-
+from .models import Dreamreal
 
 ## we use the generic viwe module for supporting 
 ## just the static file and the easy use of the template
@@ -151,11 +151,15 @@ def login(request):
         ## you have to create user in the admin
         ## and the field name in the html and the forms
         ## should math
-        if MyLoginForm.is_valid():
+        if MyLoginForm.is_valid(): ## this will check all the input data
             username = MyLoginForm.cleaned_data['user']
-            #return HttpResponse(username)
+            dbuser = Dreamreal.objects.filter(name=username)
+            if not dbuser:
+                #return HttpResponse("Its you")
+                return render(request,'public/loggedin.html',{'username':username})
+            ## now check in the database
+            
         else:
             MyLoginForm = LoginForm()
-            
-        return render(request,'public/loggedin.html',{'username':username})
+            return HttpResponse("not you")
          
