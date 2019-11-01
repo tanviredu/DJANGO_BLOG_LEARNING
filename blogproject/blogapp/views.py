@@ -128,22 +128,22 @@ from .models import Dreamreal
 
 ## this will render the form
 
-def gotologin(request):
-    return render(request,'public/form.html')
+#def gotologin(request):
+#    return render(request,'public/form.html')
 
 
 
 ### this will handle the post request coming from the server
-def login(request):
+#def login(request):
     #return HttpResponse(request.method)
     
     
     
     #username  = "not logged in"
     
-    if request.method == "POST":
+#    if request.method == "POST":
         ## create a login objetc
-        MyLoginForm = LoginForm(request.POST)
+#        MyLoginForm = LoginForm(request.POST)
         #return HttpResponse(MyLoginForm.is_valid())
         
         ## if you dont create any user in the
@@ -151,15 +151,15 @@ def login(request):
         ## you have to create user in the admin
         ## and the field name in the html and the forms
         ## should math
-        if MyLoginForm.is_valid(): ## this will check all the input data
-            username = MyLoginForm.cleaned_data['user']
-            dbuser = Dreamreal.objects.filter(name=username)
-            if not dbuser:
+#        if MyLoginForm.is_valid(): ## this will check all the input data
+#            username = MyLoginForm.cleaned_data['user']
+#            dbuser = Dreamreal.objects.filter(name=username)
+#            if not dbuser:
                 #return HttpResponse("Its you")
-                return render(request,'public/loggedin.html',{'username':username})
+#                return render(request,'public/loggedin.html',{'username':username})
             ## now check in the database
             
-        else:
-            MyLoginForm = LoginForm()
-            return HttpResponse("not you")
+#        else:
+#            MyLoginForm = LoginForm()
+#            return HttpResponse("not you")
          

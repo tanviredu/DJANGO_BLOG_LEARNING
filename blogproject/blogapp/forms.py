@@ -21,6 +21,13 @@ class LoginForm(forms.Form):
     ##<input type='password' *****name='password'********* placeholder='Enter password'>
     
    
+   ###################### this is the file uploading starts #############
+
+class ProfileForm(forms.Form):
+    name = forms.CharField(max_length=150)
+    picture = forms.ImageField()
+
+       
     
     
         
