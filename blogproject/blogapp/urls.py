@@ -17,7 +17,7 @@ from . import views
 #3 inclide the views
 # static view is one way to do that
 ## lets do it with Template view
-#from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 ## if you use the Template View you dont need 
 ## any views.py logic layer to render the static file
 
@@ -58,5 +58,9 @@ urlpatterns = [
     ## make a url for getting (get) the profile from
     ## then make a url for posting the data
     
+
+    ## make two urls
+    path('profile/',TemplateView.as_view(template_name="public/profile.html")),
+    path('profile/saveprofile/',views.SaveProfile,name='SaveProfile')
 
 ]

@@ -133,7 +133,11 @@ EMAIL_PORT = 587
 ############################################
 
 
-
+###################file upload directory
+#### you dont have to make any directory by hand
+## just mention it and when you migrate the database based on the folder
+### it will be automatically created
+### just add the line 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/') # 'pictures' is my media folder
 MEDIA_URL = '/media/'

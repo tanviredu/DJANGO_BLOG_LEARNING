@@ -191,7 +191,7 @@ def SaveProfile(request):
     else:
         ##just create an empty object
         MyProfileForm = ProfileForm()
-    return render(request,'saved.html',locals())
+    return render(request,'public/saved.html',locals())
 
     ## what is locals()  ??
     # generally we send a dictionary
