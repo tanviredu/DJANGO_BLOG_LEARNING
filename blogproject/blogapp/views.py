@@ -124,18 +124,38 @@ from .forms import LoginForm
 ## first make a form template
 ###### create the form logic
 
+
+
+## this will render the form
+
+def gotologin(request):
+    return render(request,'public/form.html')
+
+
+
+### this will handle the post request coming from the server
 def login(request):
-    username  = "not logged in"
+    #return HttpResponse(request.method)
+    
+    
+    
+    #username  = "not logged in"
+    
     if request.method == "POST":
-        ## get all the posted data at once
+        ## create a login objetc
         MyLoginForm = LoginForm(request.POST)
-        ## validate by one command
+        #return HttpResponse(MyLoginForm.is_valid())
+        
+        ## if you dont create any user in the
+        ## admin panel then it will show false
+        ## you have to create user in the admin
+        ## and the field name in the html and the forms
+        ## should math
         if MyLoginForm.is_valid():
-            ## fetch the username
-            username = MyLoginForm.cleaned_data['username']
+            username = MyLoginForm.cleaned_data['user']
+            #return HttpResponse(username)
         else:
-            ## initiate without the credential
-            MyLoginForm = Loginform()
-    ## then just render username in the 
-    ## loggedin.html
-    return render(request,'loggedin.html',{'username':username})
+            MyLoginForm = LoginForm()
+            
+        return render(request,'public/loggedin.html',{'username':username})
+         

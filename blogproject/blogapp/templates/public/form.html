@@ -1,1 +1,23 @@
 <!-- this is the form-->
+<html>
+    <head>
+        <title> this is the form page </title>
+    </head>
+
+    <body>
+        <form method="post" action="/blogapp/login/"><!-- path for the process take place-->
+        {% csrf_token %}    <!-- must be included for cross site scripting-->
+            <center>
+                <label>Username:</label>
+                <input type='text' name='user' placeholder='Enter username'>
+                <label>Password:</label>
+                <input type='password' name='password' placeholder='Enter password'>
+                <input type="submit" name="submit" value='login' class='btn btn-success'>
+
+            </center>    
+
+        </form>
+
+
+    </body>
+</html>
