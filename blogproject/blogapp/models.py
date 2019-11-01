@@ -52,3 +52,15 @@ class Online(models.Model):
 
 ## important note you can only do it on SQL databse
 ## NOSQL database dont work like that
+
+
+## make a database sceama for the image and name upload
+
+class Profile(models.Model):
+    name = models.CharField(max_length=50)
+    picture = models.ImageField(upload_to='images') ##this upload_to is a must
+
+
+    ## give a name of the table
+    class Meta:
+        db_table = "profile"

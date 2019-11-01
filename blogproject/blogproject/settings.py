@@ -130,3 +130,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ornobtanvir.git@gmail.com'
 EMAIL_HOST_PASSWORD = 'passwordTanvir123aaaron007'
 EMAIL_PORT = 587
+############################################
+
+
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures/') # 'pictures' is my media folder
+MEDIA_URL = '/media/'
+
+
+

@@ -162,4 +162,41 @@ from .models import Dreamreal
 #        else:
 #            MyLoginForm = LoginForm()
 #            return HttpResponse("not you")
-         
+
+
+
+###############################file upload starts here #####################333
+
+from .forms import ProfileForm
+from .models import Profile
+
+
+##### function dor saving profile
+
+def SaveProfile(request):
+    saved = False
+    if request.method =="POST":
+        ### get the data
+        MyProfileForm = ProfileForm(request.POST,request.FILES) ## get the two paramenter
+        ##check if valid
+        if MyProfileForm.is_valid():
+            #### create the database object to isave the data
+            profile = Profile()  ## instantiate the class
+            profile.name = MyProfileForm.cleaned_data['name'] 
+            profile.picture = MyProfileForm.cleaned_data['picture']
+            ### fetched the data
+            ##now save the data
+            profile.save()
+            saved=True
+    else:
+        ##just create an empty object
+        MyProfileForm = ProfileForm()
+    return render(request,'saved.html',locals())
+
+    ## what is locals()  ??
+    # generally we send a dictionary
+    # but if you want to send all the key value pair in the page that is created
+    # not any specfic one you can use locals()
+    # that will send all the value in a dict
+    # you can use the regular dic also 
+

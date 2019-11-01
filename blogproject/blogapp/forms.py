@@ -25,7 +25,13 @@ class LoginForm(forms.Form):
 
 class ProfileForm(forms.Form):
     name = forms.CharField(max_length=150)
-    picture = forms.ImageField()
+    picture = forms.ImageField() 
+
+
+    ## so this name and picture will not be handled by the admin panel 
+    ## so we hae to create a database sceama for that
+
+
 
        
     

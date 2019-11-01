@@ -44,15 +44,19 @@ urlpatterns = [
     #path('static/',StaticView.as_view() ),
     #path('static/',TemplateView.as_view(template_name='public/static.html'))
     ## add a path for the database direct rendering with ListView
-    path('dreamreals/',ListView.as_view(model=Dreamreal,context_object_name="dreamreal_objects",template_name="public/listview_databse.html")),
+    #path('dreamreals/',ListView.as_view(model=Dreamreal,context_object_name="dreamreal_objects",template_name="public/listview_databse.html")),
     
     
     ## make a path to go to the login form
-    path('gotologin/',views.gotologin,name='gotologin'),
+    #path('gotologin/',views.gotologin,name='gotologin'),
     
     ## make a path for reciving the post from login form
     
-    path('login/',views.login,name='login'),
+    #path('login/',views.login,name='login'),
     
+    #### file uploading 
+    ## make a url for getting (get) the profile from
+    ## then make a url for posting the data
     
+
 ]
