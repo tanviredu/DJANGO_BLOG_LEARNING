@@ -11,6 +11,7 @@ from django.http import HttpResponseRedirect
 from .forms import LoginForm
 from .models import Dreamreal
 
+
 ## we use the generic viwe module for supporting 
 ## just the static file and the easy use of the template
 ## rendering
